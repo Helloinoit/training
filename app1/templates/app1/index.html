@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+{% block title %}Picture list     {% endblock %}
+
+
+
+<div>
+<a href=/app1/login/>Login</a> 
+</div>
+
+
+<div>
+
+
+ {% for photo in photos %}
+    {# Each "contact" is a Contact model object. #}
+        <a href=/app1/{{ photo.id }}/><img src={{ photo.photo.url }} width="400" heigt="80"   alt="Username goes here"></a>
+ {% endfor %}
+
+
+ <div class="pagination">
+    <span class="step-links">
+        {% if photos.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ photos.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ photos.number }} of {{ photos.paginator.num_pages }}.
+        </span>
+
+        {% if photos.has_next %}
+            <a href="?page={{ photos.next_page_number }}">next</a>
+            <a href="?page={{ photos.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+ </div>
