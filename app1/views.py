@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from django.template import loader
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.contrib.auth import logout
 
 
 from .models import Photo
@@ -25,8 +26,9 @@ def detail(request, photo_id):
 
       
     return render(request, 'app1/detail.html', {'photo':photo})
-#    response = "You're looking at the results of photo %s."
-#    return HttpResponse(response % photo_id)
+
+
+
 
 
 

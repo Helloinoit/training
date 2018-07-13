@@ -1,9 +1,14 @@
 
 {% load staticfiles %}
+<p><a href='/app1/home/'>Home</a></p>
 
-<div>
-<a href=/app1/login/>Login</a> 
-</div>
+    {% if user.is_authenticated %}
+    <p>You are logged in</p>
+    <p><a href=/app1/logout/>Logout</a></p>
+    {% else %}
+    <p><a href=/app1/login/>Login</a> </p>
+    {% endif %}
+
 
 <p>User:{{ photo.profile}}</p>
 

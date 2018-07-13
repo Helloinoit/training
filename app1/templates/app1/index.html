@@ -2,11 +2,13 @@
 
 {% block title %}Picture list     {% endblock %}
 
+    {% if user.is_authenticated %}
+    <p>You are logged in</p>
+    <p><a href=/app1/logout/>Logout</a>
+    {% else %}
+    <p><a href=/app1/login/>Login</a> </p>
+    {% endif %}
 
-
-<div>
-<a href=/app1/login/>Login</a> 
-</div>
 
 
 <div>

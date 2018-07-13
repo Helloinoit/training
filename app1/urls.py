@@ -12,5 +12,6 @@ urlpatterns = [
     path('home', views.index, name='home'),
     path('admin/', admin.site.urls),
     path('<int:photo_id>/', views.detail, name='detail'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/app1/home'}, name='logout'),
 ]
 urlpatterns += staticfiles_urlpatterns()
