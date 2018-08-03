@@ -1,19 +1,42 @@
 
 {% load staticfiles %}
-<p><a href='/app1/home/'>Home</a></p>
+
+
+<p><a href=/app1/home>Home</a></p>
+
+    {% if user.username == photo.profile.user.username %}
+    <p contenteditable="true">This is your photo</p>
+    
+    {% else %}
+    {% endif %}
 
     {% if user.is_authenticated %}
-    <p>You are logged in</p>
     <p><a href=/app1/logout/>Logout</a></p>
     {% else %}
     <p><a href=/app1/login/>Login</a> </p>
     {% endif %}
 
+<p><img src="{{ photo.photo.url }}" width="800" heigt="160" alt="Username goes here"></p>
+   
 
-<p>User:{{ photo.profile}}</p>
+<p>Uploaded by user:{{photo.profile}}</p>
 
 <p>Description: {{photo.photo_text}}</p>
 
+    {% if user.username == photo.profile.user.username %}
+    <form action="/app1/{{ photo.id }}/" method="post">
+        {% csrf_token %}
+        <label for="description">Change your description: </label>
+        <input id="description" type="text" name="description" maxlength="160">
+        <input type="submit" value="OK">
+    </form>
 
-<p><img src="{{ photo.photo.url }}" width="800" heigt="160" alt="Username goes here"></p>
+    {% else %}
+    {% endif %}
+
+
+
+
+
+
 

@@ -1,28 +1,30 @@
 
 {% load staticfiles %}
 
-{% block title %}Picture list     {% endblock %}
+
+<p><a href=/app1/home>Home</a></p>
 
     {% if user.is_authenticated %}
     <p><a href=/app1/logout/>Logout</a>
-    <p><a href=/app1/user/{{ user.id}}/>List your own photos</a>
-    <p><a href=/app1/upload/>Upload</a>
     {% else %}
-    <p><a href=/app1/login/>Login</a> </p>
-    <p><a href=/app1/login/>List your own photos</a> </p>
-    <p><a href=/app1/login/>Upload</a> </p>
+
     {% endif %}
 
-
+<p>Uploaded by user: {{user}}</p>
 
 
 <div>
 
 
+
  {% for photo in photos %}
+    {% if photo.profile.user.username == user.username %}
     {# Each "contact" is a Contact model object. #}
         <a href=/app1/{{ photo.id }}/><img src={{ photo.photo.url }} width="200" heigt="40"   alt="Username goes here"></a>
+    {% else %}
+    {% endif %}
  {% endfor %}
+
 
 
  <div class="pagination">

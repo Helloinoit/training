@@ -4,7 +4,7 @@ from .models import Photo,  Profile
 
 class PhotoInline(admin.StackedInline):
     model = Photo
-    extra = 3
+    extra = 0
 
 
 
