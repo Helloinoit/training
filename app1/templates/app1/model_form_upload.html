@@ -3,7 +3,7 @@
 {% block content %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    <input id="photo_text" type="text" name="description" maxlength="160">
     <button type="submit">Upload</button>
   </form>
 
